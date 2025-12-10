@@ -1,7 +1,5 @@
-zone "provedor.asa.br"{
+zone "provedor.asa.br" {
     type master;
     file "/etc/bind/db.provedor.asa.br";
-    allow-transfer {
-        none;
-    };
+    allow-transfer { none; };
 };
