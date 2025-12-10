@@ -1,0 +1,15 @@
+$TTL    604800
+@       IN      SOA     ns.provedor.asa.br. admin.provedor.asa.br. (
+                        2025120702  
+                        604800
+                        86400
+                        2419200
+                        604800 )
+
+@       IN      NS      ns.provedor.asa.br.
+@       IN      A       192.168.1.169
+ns      IN      A       192.168.1.169
+
+portal  IN      A       192.168.1.169
+; CNAME para que 'potiguarnet' resolva para o 'portal'
+potiguarnet IN  CNAME   portal.provedor.asa.br.
