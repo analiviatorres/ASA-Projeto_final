@@ -1,0 +1,20 @@
+services:
+  bind9:
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: bind9
+    volumes:
+      - ../core/dns/named.conf:/etc/bind/named.conf
+      - ../core/dns/named.conf.options:/etc/bind/named.conf.options
+      - ../core/dns/named.conf.local:/etc/bind/named.conf.local
+      - ../core/dns/db.provedor.asa.br:/etc/bind/db.provedor.asa.br
+    networks:
+      - core-net
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    restart: unless-stopped
+
+
+networks:
+  core-net:
+    driver: bridge
