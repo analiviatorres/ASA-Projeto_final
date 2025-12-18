@@ -1,1 +1,41 @@
+version: '3.8'
 
+services:
+  # O Proxy Reverso do Cliente 1
+  proxy-cliente1:
+    image: nginx:alpine
+    container_name: proxy-reverso-c1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - core-net # Conecta com o ISP
+      - rede_interna_c1 # Conecta com os serviços internos
+    depends_on:
+      - portal-c1
+      - hotsite-c1
+      - sign-c1
+
+  # Serviços Internos do Cliente 1
+  portal-c1:
+    image: nginx:alpine # Substitua pela sua imagem real
+    container_name: portal-c1
+    networks:
+      - rede_interna_c1
+
+  hotsite-c1:
+    image: nginx:alpine # Substitua pela sua imagem real
+    container_name: hotsite-c1
+    networks:
+      - rede_interna_c1
+
+  sign-c1:
+    image: nginx:alpine # Substitua pela sua imagem real
+    container_name: sign-c1
+    networks:
+      - rede_interna_c1
+
+networks:
+  core-net:
+    external: true # Já existe a rede do ISP
+  rede_interna_c1:
+    driver: bridge
