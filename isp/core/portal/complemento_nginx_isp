@@ -1,1 +1,23 @@
+# Essa parte deve ser acrescida no Nginx do Proxy do ISP, que já existe no projeto.
+http {
+    # Redirecionando tráfego do Cliente 1
+    server {
+        listen 80;
+        server_name portal.cliente1.local hotsite.cliente1.local sign.cliente1.local;
+
+        location / {
+            # O nome 'proxy-reverso-c1' deve ser resolvível na rede_isp
+            proxy_pass http://proxy-reverso-c1:80; 
+            
+            # Cabeçalhos cruciais para o Proxy do Cliente 1 saber quem é o visitante real
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+
+
+
 
