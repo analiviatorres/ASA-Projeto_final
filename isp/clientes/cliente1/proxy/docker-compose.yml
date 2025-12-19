@@ -37,3 +37,5 @@ services:
 networks:
   core-net:
     external: true # Já existe a rede do ISP
+  rede_interna_c1:
+    driver: bridge
