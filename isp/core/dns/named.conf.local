@@ -7,5 +7,5 @@ zone "provedor.asa.br" {
 zone "cliente1.com.br" {
     type master;
     file "/etc/bind/db.cliente1.com.br";
-    allow-transfer { none; };
+    
 };
