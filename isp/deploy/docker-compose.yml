@@ -7,6 +7,7 @@ services:
       - ../core/dns/named.conf.options:/etc/bind/named.conf.options
       - ../core/dns/named.conf.local:/etc/bind/named.conf.local
       - ../core/dns/db.provedor.asa.br:/etc/bind/db.provedor.asa.br
+      - ../core/dns/db.cliente1.com.br:/etc/bind/db.cliente1.com.br
     networks:
       - core-net
     ports:
